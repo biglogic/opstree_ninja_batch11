@@ -1,0 +1,107 @@
+1) Create a process management utility, to find
+- Top n process by memory
+- Top n process by cpu
+- Kill process having least priority 
+- List running duration of a process by name or pid
+- List orphan process if any
+- List zoombie process if any
+- Kill process by name or pid
+- List process that are waiting for the resources
+i.e.
+./ otProcessManager topProcess 5 memory
+./ otProcessManager topProcess 10 cpu
+./ otProcessManager killLeastPriorityProcess 
+./ otProcessManager RunningDurationProcess <processName>/<processID>
+./ otProcessManager listOrphanProcess
+./ otProcessManager listZoombieProcess
+./ otProcessManager killProcess <processName>/<processID>
+./ otProcessManager ListWaitingProcess
+2) Create a utility that will create the service for any shell script 
+Input:  
+- It should input the script path along with the parameters required to start script (if any)
+- It should input the service name
+Output:
+- A service for script that can be start/stop like a daemon
+- It should return the pid of that process as well along with memory and cpu consumption stored in a file (Good to do if you can persist the historical data of resource consumption for that process)
+i.e.
+./OtRunInBackground start helloPrinter.sh helloPrinter
+./OtRunInBackground stop helloPrinter
+3) Let's play around with process:
+- clear a log file of running process
+- delete a log file of running process and see what happens to process
+- elevate the priority of a process
+
+
+
+
+
+
+
+
+
+
+Create a utility to cleanup the logs, please note:
+- You should not be using logrotate.
+- Log cleanup information should be stored in a configuration file
+  - nginx_logCleaner.conf for nginx process
+  - apache_logCleaner.conf for apache process
+  - hello_logCleaner.conf for helloWorld.sh (custom process)
+- Below are the cleanup configuration options
+  - process name for which to clean up
+  - path of the process log file (optional) - default should be /var/log/<process>
+  - Size basis i.e 40 kb
+  - Time basis i.e 0800
+  - Will it be deleted or backed up
+  - If backed up, how many backup needs to be retained
+- The utility should run as a background daemon
+- The utility must generate a log file of it's own and periodically print information
+  - each time it wakes to collect
+  - number of processes it is managing
+  - which file it rotated
+- Use the linux directory structure convention to place all the files, ie. executable script, configuration files, backup files per process, log file of this utility.
+example :
+./OtRunInBackground start OtLogCleaner --config /path/to/OtLogCleaner.d/
+
+
+apache latest
+php 7.4
+mysql 5.7
+
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install -y php7.4
+
+sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.15-1_all.deb
+sudo apt-get update
+sudo apt-get install mysql-server
+
+sudo apt update
+sudo apt install apache2
+sudo ufw app list
+sudo ufw app list
+sudo ufw status
+sudo systemctl status apache2
+
+
+
+UserManager
+    - Add NinjaTeam (Simulate Group)
+    - Add a User (Simulate) under a team
+    - Assign user to another team
+Ensure below constraints are met:
+    - A user should have read,write, execute access to home directory
+    - All the users of same team should have read and excute access to home directory of fellow team members
+    - Other team members should not have any access to other team members directory
+    - In home directory of every user there should be 3 shared directories
+        - team: Same team members will have full access
+        - ninja: All ninja's will have full access
+        - all: Every in the system should have full access
+i.e
+./UserManager.sh addTeam amigo
+./UserManager.sh addTeam unixkings
+./UserManager.sh addUser arpit amigo
+./UserManager.sh addUser kartik amigo
+./UserManager.sh addUser kuldeep unixkings
+./UserManager.sh addUser rakesh unixkings

@@ -1,0 +1,6 @@
+ mysql-server : ssh ubuntu@192.89.54.67 
+ vagrant : ssh ubuntu@192.89.54.67 
+ vagrant1 : ssh ubuntu@192.89.54.67 
+ vagrant2 : ssh ubuntu@192.89.54.67 
+ vagrant3 : ssh -p /home/atul/Desktop/pem.key  ubuntu@192.89.54.67 
+ vagrant4 : ssh -i /pem.key -p 8080  ubuntu@192.89.54.67 
