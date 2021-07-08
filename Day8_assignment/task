@@ -1,0 +1,20 @@
+Google form assignment
+You've been given three spreadsheets
+1 - class 6A - source of truth
+2 - Google form responses
+3 - Resultant sheet
+Sheet 1 - the source of truth and contains all correct information
+Sheet 2 -  google form response. It may contain wrong information as students can give wrong information
+Sheet 3 - Required sheet where we want marks of each student against their name
+There are three columns to verify a student's identity in Google form sheet
+Email - Which contains admission number
+Name - Where students wrote their name
+Admission number - Where students wrote their admission number
+For each student, match the above three colums from "source of truth sheet" to verify the student identity and then update their marks in output sheet
+Update marks only when atleast two of the three columns have right information. 
+If only name column matches write NA in marks column as name can be common
+If all three mismatch write NA in marks column.
+eg.
+./updateMarks.sh -classfile 6A.csv -gform form.csv
+output
+marks.csv
