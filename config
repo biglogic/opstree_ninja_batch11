@@ -1,0 +1,13 @@
+Host gitlab.com
+HostName gitlab.com
+IdentityFile ~/.ssh/opstree.pub
+
+
+Host 54.191.79.255
+User ubuntu
+IdentityFile ~/Downloads/ubuntu.pem
+
+Host 18.236.126.150
+  HostName 18.236.126.150
+  IdentityFile ~/Downloads/ubuntu.pem
+  User ubuntu
